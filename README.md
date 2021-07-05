@@ -12,63 +12,22 @@ go get github.com/driftprogramming/godotenv@v1.0.0
 ```
 
 #### Example
-see `godotenv_test.go` in current repo:
+see `godotenv_test.go` in current repo Or see this:
 ```go
-package godotenv
+package root
 
 import (
 	"embed"
-	"os"
-	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/driftprogramming/godotenv"
 )
 
 //go:embed envs/*
-var envFS embed.FS
+var envs embed.FS
 
-func Test_In_UnParallel(t *testing.T) {
-	t.Parallel()
-
-	err := testLoadShouldGetEmbeddedLocalEnvFileSuccessfully()
-	assert.Nil(t, err)
-	assert.Equal(t, "local.1.0", os.Getenv("version"))
-
-	err = testLoadShouldGetEmbeddedLiveeEnvFileSuccessfully()
-	assert.Nil(t, err)
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
-
-	err = testLoadShouldGetEmbeddedCommonEnvFileSuccessfully()
-	assert.Nil(t, err)
-	assert.Equal(t, "abcd", os.Getenv("shared_key"))
-
-	testLoadShouldGetEmbeddedCommonAndLiveEnvFileSuccessfully()
-	assert.Equal(t, "abcd", os.Getenv("shared_key"))
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
-
-	testLoadTestEnvWithoutOverwriteShouldNotBeOverwrite()
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
-}
-
-func testLoadShouldGetEmbeddedLocalEnvFileSuccessfully() error {
-	return Load(envFS, "envs/.env.local")
-}
-
-func testLoadShouldGetEmbeddedLiveeEnvFileSuccessfully() error {
-	return Load(envFS, "envs/.env.live")
-}
-
-func testLoadShouldGetEmbeddedCommonEnvFileSuccessfully() error {
-	return Load(envFS, "envs/.env")
-}
-
-func testLoadShouldGetEmbeddedCommonAndLiveEnvFileSuccessfully() {
-	_ = Load(envFS, "envs/.env")
-	_ = Load(envFS, "envs/.env.live")
-}
-
-func testLoadTestEnvWithoutOverwriteShouldNotBeOverwrite() {
-	_ = LoadWithoutOverwrite(envFS, "envs/.env.test")
+func SetupExample(env string) {
+	_ = godotenv.Load(envs, "envs/.env.live")
+	_ = godotenv.LoadWithoutOverwrite(envs, "envs/.env.local")
 }
 
 ```
