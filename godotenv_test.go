@@ -2,7 +2,6 @@ package godotenv
 
 import (
 	"embed"
-	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -16,22 +15,22 @@ func Test_In_UnParallel(t *testing.T) {
 
 	err := testLoadShouldGetEmbeddedLocalEnvFileSuccessfully()
 	assert.Nil(t, err)
-	assert.Equal(t, "local.1.0", os.Getenv("version"))
+	assert.Equal(t, "local.1.0", Get("version"))
 
 	err = testLoadShouldGetEmbeddedLiveeEnvFileSuccessfully()
 	assert.Nil(t, err)
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
+	assert.Equal(t, "live.1.0", Get("version"))
 
 	err = testLoadShouldGetEmbeddedCommonEnvFileSuccessfully()
 	assert.Nil(t, err)
-	assert.Equal(t, "abcd", os.Getenv("shared_key"))
+	assert.Equal(t, "abcd", Get("shared_key"))
 
 	testLoadShouldGetEmbeddedCommonAndLiveEnvFileSuccessfully()
-	assert.Equal(t, "abcd", os.Getenv("shared_key"))
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
+	assert.Equal(t, "abcd", Get("shared_key"))
+	assert.Equal(t, "live.1.0", Get("version"))
 
 	testLoadTestEnvWithoutOverwriteShouldNotBeOverwrite()
-	assert.Equal(t, "live.1.0", os.Getenv("version"))
+	assert.Equal(t, "live.1.0", Get("version"))
 }
 
 func testLoadShouldGetEmbeddedLocalEnvFileSuccessfully() error {
