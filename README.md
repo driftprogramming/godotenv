@@ -8,7 +8,7 @@ to somewhere manually.
 # Usage
 
 ```commandline
-go get github.com/driftprogramming/godotenv
+go get github.com/driftprogramming/godotenv@v1.0.0
 ```
 
 #### Example
