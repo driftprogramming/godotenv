@@ -1,4 +1,4 @@
-module godotenv
+module github.com/driftprogramming/godotenv
 
 go 1.16
 
