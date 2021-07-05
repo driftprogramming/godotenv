@@ -9,7 +9,7 @@ that you need to copy the static files to somewhere manually.
 # Usage
 
 ```commandline
-go get github.com/driftprogramming/godotenv@v1.0.0
+go get github.com/driftprogramming/godotenv@v1.1.0
 ```
 
 #### Example
