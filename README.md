@@ -40,7 +40,7 @@ var envs embed.FS
 
 func SetupExample(env string) {
 	_ = godotenv.Load(envs, "envs/.env.live")
-	_ = godotenv.LoadWithoutOverwrite(envs, "envs/.env.local")
+	_ = godotenv.LoadWithoutOverwrite(envs, "envs/.env.local") // will not overwrite if env key already existed.
 }
 
 ```
