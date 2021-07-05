@@ -1,6 +1,6 @@
 # godotenv
 
-Go dot env lib. Some of other go dot env library doesn't support go embed feature, so you can NOT embed the static file
+Go dot env lib. Some of other go dot env library doesn't support [go embed feature](https://github.com/golang/go/blob/37588ffcb221c12c12882b591a16243ae2799fd1/src/embed/internal/embedtest/embed_test.go), so you can NOT embed the static file
 into go build executable binaries. This lib is a standard repo which support this feature, once you integrate with this
 repo, you can just simply run go build as usually we do, you don't need to care that you need to copy the static files
 to somewhere manually.
