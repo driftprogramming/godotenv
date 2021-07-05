@@ -18,6 +18,10 @@ func Load(fs embed.FS, fileName string) error {
 	return setup(fs, fileName, true)
 }
 
+func Get(key string) string {
+	return os.Getenv(key)
+}
+
 func setup(fs embed.FS, fileName string, overwrite bool) error {
 	file, err := fs.Open(fileName)
 	if err != nil {
