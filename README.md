@@ -31,13 +31,13 @@ see `godotenv_test.go` in current repo Or see this:
 
 ```go
 // envs/.env.local
-version = local.1.0
-otherkey = abcd
+version=local.1.0
+otherkey=abcd
 ```
 
 ```go
 // envs/.env.live
-version = live.1.0
+version=live.1.0
 ```
 
 ```go
