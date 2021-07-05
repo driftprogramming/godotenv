@@ -14,6 +14,19 @@ go get github.com/driftprogramming/godotenv@v1.0.0
 #### Example
 see `godotenv_test.go` in current repo Or see this:
 ```go
+.
+
+├── envs.go // example here                    
+├── envs               # local, dev, test, live env files.     
+│   ├── .env           # common env variables, which will be loaded in all other envs
+│   ├── .env.dev       # dev env variables
+│   ├── .env.live      # live env variables
+│   ├── .env.local     # local env variables     
+│   └── .env.test      # test env variables       
+└── ...
+```
+```go
+// envs.go
 package root
 
 import (
